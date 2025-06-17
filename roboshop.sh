@@ -19,5 +19,4 @@ do
        
     fi
     echo "$instance Ip address: $IP"
-
 done
