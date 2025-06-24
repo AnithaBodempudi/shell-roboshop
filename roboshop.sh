@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#!/bin/bash
-
 AMI_ID="ami-09c813fb71547fc4f"
 SG_ID="sg-073029036616b0bac" # replace with your SG ID
 INSTANCES=("mongodb" "redis" "mysql" "rabbitmq" "catalogue" "user" "cart" "shipping" "payment" "dispatch" "frontend")
@@ -30,7 +28,7 @@ do
         ,"Changes": [{
         "Action"              : "UPSERT"
         ,"ResourceRecordSet"  : {
-            "Name"              : "'$RECORD_NAME'"
+            "Name"              : "'$instance'.'$DOMAIN_NAME'"
             ,"Type"             : "A"
             ,"TTL"              : 1
             ,"ResourceRecords"  : [{
