@@ -42,14 +42,8 @@ VALIDATE $? "Enabling nodejs:20"
 dnf install nodejs -y &>>$LOG_FILE
 VALIDATE $? "Installing nodejs:20"
 
-# id roboshop
-# if [ $? -ne 0 ]
-# then
 useradd --system --home /app --shell /sbin/nologin --comment "roboshop system user" roboshop &>>$LOG_FILE
 VALIDATE $? "Creating roboshop system user"
-# else
-#     echo -e "System user roboshop already created ... $Y SKIPPING $N"
-# fi
 
 mkdir /app 
 VALIDATE $? "Creating app directory"
@@ -77,11 +71,5 @@ cp $SCRIPT_DIR/mongo.repo /etc/yum.repos.d/mongo.repo
 dnf install mongodb-mongosh -y &>>$LOG_FILE
 VALIDATE $? "Installing MongoDB Client"
 
-# STATUS=$(mongosh --host mongodb.daws84s.site --eval 'db.getMongo().getDBNames().indexOf("catalogue")')
-# if [ $STATUS -lt 0 ]
-# then
+
 mongosh --host mongodb.devsecopspractice.site </app/db/master-data.js &>>$LOG_FILE
-#     VALIDATE $? "Loading data into MongoDB"
-# else
-#     echo -e "Data is already loaded ... $Y SKIPPING $N"
-# fi
