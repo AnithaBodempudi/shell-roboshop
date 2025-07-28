@@ -79,7 +79,7 @@ VALIDATE $? "Starting shipping"
 dnf install mysql -y &>>$LOG_FILE
 VALIDATE $? "Install MySQL"
 
-mysql -h mysql.devsecopspractice.site -u root -pRoboShop@1 -e 'use cities'
+mysql -h mysql.devsecopspractice.site -u root -p$MYSQL_ROOT_PASSWORD -e 'use cities'
 if [ $? -ne 0 ]
 then 
 
