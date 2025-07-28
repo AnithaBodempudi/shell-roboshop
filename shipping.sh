@@ -77,7 +77,7 @@ systemctl start shipping &>>$LOG_FILE
 VALIDATE $? "Starting shipping"
 
 dnf install mysql -y &>>$LOG_FILE
-Validate $? "Install MySQL"
+VALIDATE $? "Install MySQL"
 
 mysql -h mysql.devsecopspractice.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/schema.sql &>>$LOG_FILE
 mysql -h mysql.devsecopspractice.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/app-user.sql &>>$LOG_FILE
@@ -85,7 +85,7 @@ mysql -h mysql.devsecopspractice.site -uroot -p$MYSQL_ROOT_PASSWORD < /app/db/ma
 VALIDATE $? "Loading data into MySQL"
 
 systemctl restart shipping &>>$LOG_FILE
-Validate $? "Restart Shipping"
+VALIDATE $? "Restart Shipping"
 
 END_TIME=$(date +%s)
 TOTAL_TIME=$(( $END_TIME - $START_TIME ))
