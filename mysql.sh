@@ -46,7 +46,7 @@ VALIDATE $? "Enabling MySQL"
 systemctl start mysqld &>>$LOG_FILE
 VALIDATE $? "Starting MySQL"
 
-mysql_Secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD &>>$LOG_FILE
+mysql_secure_installation --set-root-pass $MYSQL_ROOT_PASSWORD &>>$LOG_FILE
 VALIDATE $? "Setting MySQL root password"
 
 
